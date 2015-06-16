@@ -1,0 +1,27 @@
+%h1 Listing events
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Start at
+      %th End at
+      %th
+      %th
+      %th
+
+  %tbody
+    - @events.each do |event|
+      %tr
+        %td= event.title
+        %td= event.start_at
+        %td= event.end_at
+        %td= link_to 'Show', event
+        %td= link_to 'Edit', edit_event_path(event)
+        %td= link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+.container-fluid
+  .col-lg-6
+    %div#calendar
+    = link_to 'New Event', new_event_path
